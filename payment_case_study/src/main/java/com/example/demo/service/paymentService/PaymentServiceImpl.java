@@ -75,7 +75,7 @@ public class PaymentServiceImpl {
         BaseResponse<List<PaymentResponse>> response = new BaseResponse<>();
         String url = request.getRequestURL().toString();
 
-        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        PageRequest pageRequest = PageRequest.of(pageNumber - 1, pageSize);
         Page<Transaction> transactions = transactionRepository.findAllByUserId(userId, pageRequest);
         log.info("transactions --> {}", transactions);
         if (Optional.ofNullable(transactions).isEmpty()) {
