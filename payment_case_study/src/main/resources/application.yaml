@@ -1,0 +1,46 @@
+server:
+  port: 2024
+
+spring:
+
+  datasource:
+    url: jdbc:h2:mem:switch_payment
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  pulsar:
+    client:
+      service:
+        url: pulsar://localhost:6650
+      authentication:
+        param:
+          token: 634634267
+
+payment:
+  types:
+    - CARD
+    - BANK_TRANSFER
+    - WALLET
+
+device:
+  types:
+    - mobile
+    - web
+
+jwt:
+  secret-key: Rf42LhB5EfehN4E4VZchpg+SMftg3rweTo4+B91VzvI=
+  expiration: 86400000
+  refresh-token:
+    expiration: 604800000
+
+pulsar:
+  producer:
+    topic-base: persistent://public/default/
